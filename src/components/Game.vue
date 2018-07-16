@@ -1,17 +1,19 @@
 <template>
 	<div>
-	  <Player v-for='(player, index) in players' 
-	  	:key="index" 
-	  	:name="player.name" 
-	  	:pid="player.pid" 
-	  	:isRobot="player.isRobot" 
-	  	:health="player.health" 
-	  	:isStarted="isStarted"
-	  	@onAttack="attack" 
-	  	@onBlast="blast" 
-	  	@onHeal="heal" 
-	  	@onGiveUp="giveUp" 
-	  	class="game__player" />
+    <div>
+  	  <Player v-for='(player, index) in players' 
+  	  	:key="index" 
+  	  	:name="player.name" 
+  	  	:pid="player.pid" 
+  	  	:isRobot="player.isRobot" 
+  	  	:health="player.health" 
+  	  	:isStarted="isStarted"
+  	  	@onAttack="attack" 
+  	  	@onBlast="blast" 
+  	  	@onHeal="heal" 
+  	  	@onGiveUp="giveUp" 
+  	  	class="game__player" />
+    </div>
 	  <button v-if="!this.isStarted" class="start" @click.prevent='startGame'>START</button>
 	  <Commentary :comments="comments" :max="maxComment" class="game__commentary" />
 	  <ConfirmBox v-if="isOpenConfirmBox" :message="popOverMsg" @onOkay="startGame" @onCancel="hideConfirmBox"/>
